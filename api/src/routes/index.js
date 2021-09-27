@@ -47,6 +47,40 @@ const getAllDogs = async () => {
     return All
 }
 
+
+async function getTemperaments() {
+    try {
+      const response = await axios.get('https://api.thedogapi.com/v1/breeds');
+      let arr = response.data.map(el => {
+        return[
+          el.temperament
+        ]
+      })
+      arr = arr.flat()
+      let b = []
+      for(let i=0;i<arr.length;i++){
+        if(typeof arr[i] === 'string'){
+          b.push(arr[i].split(','))
+        }
+      }
+      b = b.flat()
+      let sinDuplicados = [...new Set(b)]
+      // sin duplicados pero con espacios >:c
+      let sinEspacio = sinDuplicados.filter(el => el[0] !== ' ')
+      let conEspacio = sinDuplicados.filter(el => el[0] === ' ')
+      //quitar los espacios de conEspacio y pushearlo a sinEspacio
+      conEspacio.forEach(element => {
+        sinEspacio.push(element.slice(1))
+      });
+      let sinDuplicadosX2 = [...new Set(sinEspacio)]
+      return sinDuplicadosX2
+    } 
+    catch (error) {
+      console.error(error);
+    }
+}
+
+
 router.get('/dogs', async(req,res) =>{
     let {raza} = req.query
     let all = await getAllDogs()
@@ -58,5 +92,19 @@ router.get('/dogs', async(req,res) =>{
     }
     res.status(200).send(all)
 })
+
+
+router.get('/temperament',async (req,res) =>{
+    let temperament = await getTemperaments()
+    temperament.forEach(el => {
+        Temperament.findOrCreate({
+            where: {name: el}
+        })
+    })
+    let allTemperaments = await Temperament.findAll()
+    res.send(allTemperaments)
+})
+ 
+
 
 module.exports = router;
