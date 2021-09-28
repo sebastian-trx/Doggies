@@ -14,6 +14,7 @@ const getApiInfo = async () => {
         const apiUrl = await axios.get('https://api.thedogapi.com/v1/breeds')
         const apiInfo = await apiUrl.data.map(el => {
             return{
+                id: el.id,
                 name: el.name,
                 height: el.height.metric,
                 weight: el.weight.metric,
@@ -28,6 +29,7 @@ const getApiInfo = async () => {
     }
 }
 
+
 const getDbInfo = async () => {
     return await Dog.findAll({
         include:{
@@ -39,6 +41,7 @@ const getDbInfo = async () => {
         }
     })
 }
+
 
 const getAllDogs = async () => {
     let apiInfo = await getApiInfo()
@@ -94,6 +97,22 @@ router.get('/dogs', async(req,res) =>{
 })
 
 
+router.get('/dogs/:idRaza', async (req,res) => {
+    let {idRaza} = req.params
+    let allDogs = await getAllDogs()
+    if(idRaza.length > 20){
+        let dogId =  await allDogs.filter(el => el.id === idRaza)
+        dogId.length ?
+        res.send(dogId):
+        res.send('id invalido')
+    }
+    idRaza = parseInt(idRaza)
+    let dogId =  await allDogs.filter(el => el.id === idRaza)
+    dogId.length ?
+    res.send(dogId):
+    res.send('id invalido')
+})
+
 
 router.get('/temperament',async (req,res) =>{
     let temperament = await getTemperaments()
@@ -106,6 +125,7 @@ router.get('/temperament',async (req,res) =>{
     res.send(allTemperaments)
 })
  
+
 router.post('/dogs', async (req,res) =>{
     let {
         name,
