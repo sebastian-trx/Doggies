@@ -19,7 +19,7 @@ const getApiInfo = async () => {
                 weight: el.weight.metric,
                 life_span: el.life_span,
                 image: Object.values(el.image),
-                temperament: el.temperament
+                temperaments: el.temperament
             }
         })
         return apiInfo;
@@ -94,6 +94,7 @@ router.get('/dogs', async(req,res) =>{
 })
 
 
+
 router.get('/temperament',async (req,res) =>{
     let temperament = await getTemperaments()
     temperament.forEach(el => {
@@ -105,6 +106,29 @@ router.get('/temperament',async (req,res) =>{
     res.send(allTemperaments)
 })
  
+router.post('/dogs', async (req,res) =>{
+    let {
+        name,
+        height,
+        weight,
+        life_span,
+        image,
+        temperament
+    } = req.body
 
+    let razaCreated = await Dog.create({
+        name,
+        height,
+        weight,
+        life_span,
+        image,
+    })
+
+    let temperamentDb = await Temperament.findAll({
+        where: {name: temperament}
+    })
+    razaCreated.addTemperament(temperamentDb)
+    res.send('nueva raza creada ')
+})
 
 module.exports = router;
