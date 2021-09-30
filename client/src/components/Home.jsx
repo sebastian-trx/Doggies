@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDogs } from "../actions";
+import { filterByBreed, filterByTemperament, getDogs, getTemperaments } from "../actions";
 import { Card } from "./Card";
 import { Paginado } from "./Paginado";
 
 export function Home() {
     const dispatch = useDispatch()
     const allDogs = useSelector((state) => state.dogs)
+    const temperaments = useSelector((state) => state.temperaments)
     const [currentPage, setCurrentPage] = useState(1)
     const [dogsPerPage, setDogsPerPage] = useState(8)
     const indexofLastDog = currentPage * dogsPerPage
@@ -21,6 +22,7 @@ export function Home() {
 
     useEffect (()=> {
         dispatch(getDogs())
+        dispatch(getTemperaments())
     },[])
 
     function handleClick(e) {
@@ -28,17 +30,30 @@ export function Home() {
         dispatch(getDogs())
     }
 
+    function handleFilterByBreed(e) {
+        e.preventDefault()
+        dispatch(filterByBreed(e.target.value))
+    }
+
+    function handleFilterByTemperament(e) {
+        e.preventDefault()
+        dispatch(filterByTemperament(e.target.value))
+    }
+
     return(
         <div>
+            <h1>PERRITUS </h1>
+
             <Link to='/crearRaza'>
                 <button>Crear Raza</button>
             </Link>
-            <h1>PERRITUS </h1>
+
             <div>
                 <button onClick={e => {handleClick(e)}}>
                     Cargar los perros de nuevo
                 </button>
             </div>
+
             <div>
                 <select>
                     <option value="asc">Ascendente</option>
@@ -46,11 +61,33 @@ export function Home() {
                 </select>
             </div>
 
+            <div>
+                <select onChange = {e => handleFilterByBreed(e)}>
+                    { 
+                        allDogs.map((el, indx) => (
+                            <option key={indx} value= {el.name}>{el.name}</option>        
+                        ))
+                    }
+                </select>
+            </div>
+
+            <div>
+                <select onChange = {e => handleFilterByTemperament(e)}>
+                    { 
+                        temperaments.map((el, indx) => (
+                            <option key={indx} value= {el.name}>{el.name}</option>        
+                        ))
+                    }
+                </select>
+            </div>
+
+
             <Paginado 
             dogsPerPage= {dogsPerPage} 
             allDogs={allDogs.length} 
             paginado={paginado}
             />
+
 
             {
                 currentDogs && currentDogs.map(el=>(
@@ -73,6 +110,7 @@ export function Home() {
                     />
                 ))
             }
+
         </div>
     )
 }

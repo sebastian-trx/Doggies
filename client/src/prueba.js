@@ -1,4 +1,4 @@
-let arr = [
+let allDogs1 = [
     {
     "id": 264,
     "name": "Yorkshire Terrier",
@@ -27,7 +27,7 @@ let arr = [
     "updatedAt": "2021-09-29T14:35:21.729Z",
     "temperaments": [
       {
-        "name": "Stubborn"
+        "name": "Asada"
       },
       {
         "name": "Vigilant"
@@ -37,9 +37,22 @@ let arr = [
 ]
 
 
-for(let i=0; i<arr.length; i++){
-    if(arr[i].temperaments !== undefined){
-        console.log(arr[i].temperaments)
-    }
-}
+let filterByTemperament, filter1, filter2
+// si existe temperaments y si es de tipo string filter2 
 
+filter2 = allDogs1.filter(el => {
+  if (el.temperaments && typeof el.temperaments === 'string') {
+    return  el.temperaments.split(', ').includes("Bold")
+  }
+})
+
+// si existe temperaments y si es de tipo array filter1
+filter1 = allDogs1.filter(el => {
+  if (el.temperaments && Array.isArray(el.temperaments)) {
+    return el.temperaments.map(el => el.name).includes("Bold")
+  }
+})
+
+filterByTemperament = filter1.concat(filter2)    
+
+console.log(filterByTemperament)

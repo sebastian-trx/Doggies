@@ -10,3 +10,28 @@ export function getDogs() {
         })
     }
 }
+
+export function filterByBreed(payload){
+    return{
+        type: 'FILTER_BY_BREED',
+        payload
+    }
+}
+
+export function getTemperaments(){
+    return async function(dispatch){
+        let temperaments = await axios.get('http://localhost:3001/temperament/')
+
+        return dispatch({
+            type: 'GET_TEMPERAMENTS',
+            payload: temperaments.data
+        })
+    }
+}
+
+export function filterByTemperament(payload){
+    return{
+        type: 'FILTER_BY_TEMPERAMENT',
+        payload
+    }
+}
