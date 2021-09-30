@@ -3,10 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getDogs } from "../actions";
 import { Card } from "./Card";
+import { Paginado } from "./Paginado";
 
 export function Home() {
     const dispatch = useDispatch()
     const allDogs = useSelector((state) => state.dogs)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [dogsPerPage, setDogsPerPage] = useState(8)
+    const indexofLastDog = currentPage * dogsPerPage
+    const indexOfFirstDog = indexofLastDog - dogsPerPage
+    const currentDogs = allDogs.slice(indexOfFirstDog, indexofLastDog)
+
+
+    const paginado = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
     useEffect (()=> {
         dispatch(getDogs())
@@ -34,8 +45,15 @@ export function Home() {
                     <option value="desc">Descendente</option>
                 </select>
             </div>
+
+            <Paginado 
+            dogsPerPage= {dogsPerPage} 
+            allDogs={allDogs.length} 
+            paginado={paginado}
+            />
+
             {
-                allDogs && allDogs.map(el=>(
+                currentDogs && currentDogs.map(el=>(
                     <Card 
                     key={el.id} 
                     name={el.name} 
