@@ -49,3 +49,10 @@ export function filterMax_Min(payload){
         payload
     }
 }
+
+export function BreedByUser(payload){
+    return{
+        type: 'BREED_BY_USER',
+        payload
+    }
+}

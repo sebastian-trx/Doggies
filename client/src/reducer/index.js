@@ -94,6 +94,24 @@ function rootReducer(state = initialState, action) {
             return{
                 ...state,
                 dogs: filterMax_Min
+            }
+        case 'BREED_BY_USER':
+            let allDogs4 = state.dogs1
+            let filterByUser = action.payload === 'user' ? 
+            allDogs4.filter(el => {
+                if (el.temperaments && typeof el.temperaments !== 'string') {
+                  return  true
+                }
+              })
+            :
+            allDogs4.filter(el => {
+                if (el.temperaments && typeof el.temperaments === 'string') {
+                  return  true
+                }
+              })
+            return{
+                ...state,
+                dogs: filterByUser
             }    
         default:
             return state

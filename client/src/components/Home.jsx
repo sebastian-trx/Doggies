@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { filterByBreed, filterByTemperament, getDogs, getTemperaments, filterAsc_Desc, filterMax_Min} from "../actions";
+import { filterByBreed, filterByTemperament, getDogs, getTemperaments, filterAsc_Desc, filterMax_Min, BreedByUser} from "../actions";
 import { Card } from "./Card";
 import { Paginado } from "./Paginado";
 
@@ -31,12 +31,12 @@ export function Home() {
         e.preventDefault()
         dispatch(getDogs())
     }
-
+    
     function handleFilterByBreed(e) {
         e.preventDefault()
         dispatch(filterByBreed(e.target.value))
     }
-
+    
     function handleFilterByTemperament(e) {
         e.preventDefault()
         dispatch(filterByTemperament(e.target.value))
@@ -55,19 +55,32 @@ export function Home() {
         setCurrentPage(1)
         setOrden(`Ordenado ${e.target.value}`)
     }
-
+   
+    function handleBreed(e) {
+        e.preventDefault()
+        console.log(e.type)
+        dispatch(BreedByUser(e.target.value))
+    }
+    
     return(
         <div>
             <h1>PERRITUS </h1>
+
+            <div>
+                <button onClick={e => {handleClick(e)}}>
+                    Cargar los perros de nuevo
+                </button>
+            </div>
 
             <Link to='/crearRaza'>
                 <button>Crear Raza</button>
             </Link>
 
             <div>
-                <button onClick={e => {handleClick(e)}}>
-                    Cargar los perros de nuevo
-                </button>
+                <select onChange = {e => handleBreed(e)}>
+                    <option value="api">Razas desde la API</option>
+                    <option value="user">Razas creadas por el usuario</option>
+                </select>
             </div>
 
             <div>
