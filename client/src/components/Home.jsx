@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { filterByBreed, filterByTemperament, getDogs, getTemperaments, filterAsc_Desc, filterMax_Min, BreedByUser} from "../actions";
+import { filterByBreed, filterByTemperament, getDogs, getTemperaments, filterAsc_Desc, filterMax_Min, breedByUser} from "../actions";
 import { Card } from "./Card";
 import { Paginado } from "./Paginado";
+import { SearchBar } from "./SearchBar";
 
 export function Home() {
     const dispatch = useDispatch()
@@ -59,7 +60,7 @@ export function Home() {
     function handleBreed(e) {
         e.preventDefault()
         console.log(e.type)
-        dispatch(BreedByUser(e.target.value))
+        dispatch(breedByUser(e.target.value))
     }
     
     return(
@@ -117,6 +118,7 @@ export function Home() {
                 </select>
             </div>
 
+            <SearchBar/>
 
             <Paginado 
             dogsPerPage= {dogsPerPage} 

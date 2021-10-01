@@ -112,7 +112,12 @@ function rootReducer(state = initialState, action) {
             return{
                 ...state,
                 dogs: filterByUser
-            }    
+            }
+        case 'SEARCH_BAR':
+            return{
+                ...state,
+                dogs: action.payload,
+            }        
         default:
             return state
     }

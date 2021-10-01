@@ -91,7 +91,16 @@ router.get('/dogs', async(req,res) =>{
         let dog = await all.filter(el => el.name.toLowerCase().includes(raza.toLowerCase()))
         dog.length ?
         res.status(200).send(dog):
-        res.send('Ups no existe esa raza')
+        //res.send('Ups no existe esa raza')
+        res.json([{
+            "id": 000000,
+            "name": "notFound",
+            "height": "notFound",
+            "weight": "notFound",
+            "life_span": "notFound",
+            "image": "https://ctuid.com/img/not-found.png",
+            "temperaments": "notFound"
+          },])
     }
     res.status(200).send(all)
 })

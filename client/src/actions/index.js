@@ -50,9 +50,20 @@ export function filterMax_Min(payload){
     }
 }
 
-export function BreedByUser(payload){
+export function breedByUser(payload){
     return{
         type: 'BREED_BY_USER',
         payload
+    }
+}
+
+export function searchBar(payload){
+    return async function (dispatch){
+        let razaDogs = await axios.get(`http://localhost:3001/dogs?raza=${payload}`)
+        return dispatch({
+            type: 'SEARCH_BAR',
+            payload: razaDogs.data
+        })
+
     }
 }
