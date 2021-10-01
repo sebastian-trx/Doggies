@@ -35,3 +35,17 @@ export function filterByTemperament(payload){
         payload
     }
 }
+
+export function filterAsc_Desc(payload){
+    return{
+        type: 'FILTER_ASC_DESC',
+        payload
+    }
+}
+
+export function filterMax_Min(payload){
+    return{
+        type: 'FILTER_MAX_MIN',
+        payload
+    }
+}

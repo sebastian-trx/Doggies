@@ -12,7 +12,7 @@ let allDogs1 = [
     "id": 197,
     "name": "Poodle (Toy)",
     "height": "23 - 28",
-    "weight": "3 - 4",
+    "weight": "10 - 4",
     "life_span": "18 years",
     "image": "https://cdn2.thedogapi.com/images/rJFJVxc4m.jpg"
   },
@@ -55,4 +55,42 @@ filter1 = allDogs1.filter(el => {
 
 filterByTemperament = filter1.concat(filter2)    
 
-console.log(filterByTemperament)
+//console.log(filterByTemperament)
+
+allDogs1.sort((a,b)=> {
+  if (a.weight > b.weight) {
+    return 1
+  }
+  if (a.weight < b.weight) {
+    return -1
+  }
+  return 0
+})
+
+//console.log(allDogs1)
+
+var items = [
+  { name: 'fdsas', value: "20 - 21" },
+  { name: 'Edward', value: "2 - 3" },
+  { name: 'tyui', value: "NaN - 6" },
+  { name: 'fdsas', value: "NaN" },
+  { name: 'Sharpe', value: "3 - 4"  },
+  { name: 'And', value: "3 - 6" },
+];
+
+let noNaN = items.filter(e=> !e.value.includes("NaN"))
+
+//console.log(noNaN)
+
+noNaN.sort(function (a, b) {
+    if (parseInt(a.value) > parseInt(b.value)) {
+      return 1;
+    }
+    if (parseInt(a.value) < parseInt(b.value)) {
+      return -1;
+    }
+    // a must be equal to b
+    return 0;
+});
+
+console.log(noNaN)

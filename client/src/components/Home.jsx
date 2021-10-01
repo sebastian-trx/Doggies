@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { filterByBreed, filterByTemperament, getDogs, getTemperaments } from "../actions";
+import { filterByBreed, filterByTemperament, getDogs, getTemperaments, filterAsc_Desc, filterMax_Min} from "../actions";
 import { Card } from "./Card";
 import { Paginado } from "./Paginado";
 
 export function Home() {
     const dispatch = useDispatch()
     const allDogs = useSelector((state) => state.dogs)
+    const allDogs1 = useSelector((state) => state.dogs1)
     const temperaments = useSelector((state) => state.temperaments)
+    const [orden, setOrden] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
     const [dogsPerPage, setDogsPerPage] = useState(8)
     const indexofLastDog = currentPage * dogsPerPage
@@ -39,6 +41,20 @@ export function Home() {
         e.preventDefault()
         dispatch(filterByTemperament(e.target.value))
     }
+    
+    function handleFilterAsc_Desc(e) {
+        e.preventDefault()
+        dispatch(filterAsc_Desc(e.target.value))
+        setCurrentPage(1)
+        setOrden(`Ordenado ${e.target.value}`)
+    }
+    
+    function handleFilterMax_Min (e) {
+        e.preventDefault()
+        dispatch(filterMax_Min(e.target.value))
+        setCurrentPage(1)
+        setOrden(`Ordenado ${e.target.value}`)
+    }
 
     return(
         <div>
@@ -55,16 +71,23 @@ export function Home() {
             </div>
 
             <div>
-                <select>
+                <select onChange = {e => handleFilterAsc_Desc(e)}>
                     <option value="asc">Ascendente</option>
                     <option value="desc">Descendente</option>
+                </select>
+            </div>
+            
+            <div>
+                <select onChange = {e => handleFilterMax_Min(e)}>
+                    <option value="mas">Mas pesado</option>
+                    <option value="menos">Menos pesado</option>
                 </select>
             </div>
 
             <div>
                 <select onChange = {e => handleFilterByBreed(e)}>
                     { 
-                        allDogs.map((el, indx) => (
+                        allDogs1.map((el, indx) => (
                             <option key={indx} value= {el.name}>{el.name}</option>        
                         ))
                     }
