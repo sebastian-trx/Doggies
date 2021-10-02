@@ -67,3 +67,11 @@ export function searchBar(payload){
 
     }
 }
+
+export function createBreed(payload) {
+    return async function (dispatch){
+        let createBreed = await axios.post('http://localhost:3001/dogs/',payload)
+    
+        return createBreed
+    }
+}

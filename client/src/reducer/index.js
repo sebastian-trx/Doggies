@@ -118,6 +118,10 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 dogs: action.payload,
             }        
+        case 'CREATE_BREED':
+            return{
+                ...state
+            }
         default:
             return state
     }

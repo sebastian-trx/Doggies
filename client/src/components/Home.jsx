@@ -73,7 +73,7 @@ export function Home() {
                 </button>
             </div>
 
-            <Link to='/crearRaza'>
+            <Link to='/createbreed'>
                 <button>Crear Raza</button>
             </Link>
 
