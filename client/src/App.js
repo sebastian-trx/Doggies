@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import { Home } from './components/Home';
 import {LandingPage} from './components/LandingPage'
 import { BreedCreate } from './components/BreedCreate';
+import { Detail } from './components/Detail';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route exact path= '/' component= {LandingPage}/>
           <Route path = '/home' component = {Home}/>
           <Route path = '/createbreed' component = {BreedCreate}/>
+          <Route path = '/detail/:id' component = {Detail}/>
         </Switch>
       </div>
     </BrowserRouter>

@@ -119,7 +119,10 @@ router.get('/dogs/:idRaza', async (req,res) => {
     let dogId =  await allDogs.filter(el => el.id === idRaza)
     dogId.length ?
     res.send(dogId):
-    res.send('id invalido')
+    //res.send('id invalido')
+    res.json({
+        "name": "notFound",
+      })
 })
 
 
