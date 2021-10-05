@@ -10,6 +10,7 @@ import {
   filterMax_Min,
   breedByUser,
 } from "../actions";
+import { BreedFromApiOrUser } from "./BreedFromApiOrUser";
 import { Card } from "./Card";
 import { FilterAscDesc } from "./FilterAscDesc";
 import { FilterByBreed } from "./FilterByBreed";
@@ -45,13 +46,6 @@ export function Home() {
     dispatch(getDogs());
   }
 
-
-  function handleBreed(e) {
-    e.preventDefault();
-    console.log(e.type);
-    dispatch(breedByUser(e.target.value));
-  }
-
   return (
     <div>
       <h1>PERRITUS </h1>
@@ -70,12 +64,7 @@ export function Home() {
         <button>Crear Raza</button>
       </Link>
 
-      <div>
-        <select onChange={(e) => handleBreed(e)}>
-          <option value="api">Razas desde la API</option>
-          <option value="user">Razas creadas por el usuario</option>
-        </select>
-      </div>
+     <BreedFromApiOrUser/>
 
       <FilterAscDesc 
       setCurrentPage={setCurrentPage}
