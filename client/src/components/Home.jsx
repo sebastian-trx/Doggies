@@ -12,6 +12,7 @@ import {
 } from "../actions";
 import { Card } from "./Card";
 import { FilterByTemperaments } from "./FilterByTemperament";
+import { MasMenosPesado } from "./MasMenosPesado";
 import { Paginado } from "./Paginado";
 import { SearchBar } from "./SearchBar";
 
@@ -54,13 +55,6 @@ export function Home() {
     setOrden(`Ordenado ${e.target.value}`);
   }
 
-  function handleFilterMax_Min(e) {
-    e.preventDefault();
-    dispatch(filterMax_Min(e.target.value));
-    setCurrentPage(1);
-    setOrden(`Ordenado ${e.target.value}`);
-  }
-
   function handleBreed(e) {
     e.preventDefault();
     console.log(e.type);
@@ -99,12 +93,10 @@ export function Home() {
         </select>
       </div>
 
-      <div>
-        <select onChange={(e) => handleFilterMax_Min(e)}>
-          <option value="mas">Mas pesado</option>
-          <option value="menos">Menos pesado</option>
-        </select>
-      </div>
+      <MasMenosPesado 
+      setCurrentPage={setCurrentPage}
+      setOrden = {setOrden}
+      />
 
       <div>
         <select onChange={(e) => handleFilterByBreed(e)}>
