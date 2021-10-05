@@ -1,0 +1,26 @@
+import { useSelector, useDispatch } from "react-redux";
+import { filterByBreed } from "../actions";
+
+
+export function FilterByBreed(params) {
+    const allDogs1 = useSelector((state) => state.dogs1);
+    const dispatch = useDispatch()
+    
+    function handleFilterByBreed(e) {
+        e.preventDefault();
+        dispatch(filterByBreed(e.target.value));
+      }
+
+    return(
+        <div>
+        <select onChange={(e) => handleFilterByBreed(e)}>
+          {allDogs1.map((el, indx) => (
+            <option key={indx} value={el.name}>
+              {el.name}
+            </option>
+          ))}
+        </select>
+      </div>
+    )
+    
+}

@@ -12,6 +12,7 @@ import {
 } from "../actions";
 import { Card } from "./Card";
 import { FilterAscDesc } from "./FilterAscDesc";
+import { FilterByBreed } from "./FilterByBreed";
 import { FilterByTemperaments } from "./FilterByTemperament";
 import { MasMenosPesado } from "./MasMenosPesado";
 import { Paginado } from "./Paginado";
@@ -44,10 +45,6 @@ export function Home() {
     dispatch(getDogs());
   }
 
-  function handleFilterByBreed(e) {
-    e.preventDefault();
-    dispatch(filterByBreed(e.target.value));
-  }
 
   function handleBreed(e) {
     e.preventDefault();
@@ -90,15 +87,7 @@ export function Home() {
       setOrden = {setOrden}
       />
 
-      <div>
-        <select onChange={(e) => handleFilterByBreed(e)}>
-          {allDogs1.map((el, indx) => (
-            <option key={indx} value={el.name}>
-              {el.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      <FilterByBreed/>
 
       <FilterByTemperaments/>
 
