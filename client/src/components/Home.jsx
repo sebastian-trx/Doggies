@@ -11,6 +11,7 @@ import {
   breedByUser,
 } from "../actions";
 import { Card } from "./Card";
+import { FilterByTemperaments } from "./FilterByTemperament";
 import { Paginado } from "./Paginado";
 import { SearchBar } from "./SearchBar";
 
@@ -44,11 +45,6 @@ export function Home() {
   function handleFilterByBreed(e) {
     e.preventDefault();
     dispatch(filterByBreed(e.target.value));
-  }
-
-  function handleFilterByTemperament(e) {
-    e.preventDefault();
-    dispatch(filterByTemperament(e.target.value));
   }
 
   function handleFilterAsc_Desc(e) {
@@ -120,15 +116,7 @@ export function Home() {
         </select>
       </div>
 
-      <div>
-        <select onChange={(e) => handleFilterByTemperament(e)}>
-          {temperaments.map((el, indx) => (
-            <option key={indx} value={el.name}>
-              {el.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      <FilterByTemperaments/>
 
       <SearchBar />
 
