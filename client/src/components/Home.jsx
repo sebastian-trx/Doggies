@@ -1,24 +1,15 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  filterByBreed,
-  filterByTemperament,
-  getDogs,
-  getTemperaments,
-  filterAsc_Desc,
-  filterMax_Min,
-  breedByUser,
-} from "../actions";
+import { getDogs, getTemperaments } from "../actions";
 import { BreedFromApiOrUser } from "./BreedFromApiOrUser";
-import { Card } from "./Card";
+import { Cards } from "./Cards";
 import { FilterAscDesc } from "./FilterAscDesc";
 import { FilterByBreed } from "./FilterByBreed";
 import { FilterByTemperaments } from "./FilterByTemperament";
 import { MasMenosPesado } from "./MasMenosPesado";
 import { Paginado } from "./Paginado";
 import { SearchBar } from "./SearchBar";
-
 
 export function Home() {
   const dispatch = useDispatch();
@@ -64,21 +55,15 @@ export function Home() {
         <button>Crear Raza</button>
       </Link>
 
-     <BreedFromApiOrUser/>
+      <BreedFromApiOrUser />
 
-      <FilterAscDesc 
-      setCurrentPage={setCurrentPage}
-      setOrden = {setOrden}
-      />
+      <FilterAscDesc setCurrentPage={setCurrentPage} setOrden={setOrden} />
 
-      <MasMenosPesado 
-      setCurrentPage={setCurrentPage}
-      setOrden = {setOrden}
-      />
+      <MasMenosPesado setCurrentPage={setCurrentPage} setOrden={setOrden} />
 
-      <FilterByBreed/>
+      <FilterByBreed />
 
-      <FilterByTemperaments/>
+      <FilterByTemperaments />
 
       <SearchBar />
 
@@ -88,29 +73,7 @@ export function Home() {
         paginado={paginado}
       />
 
-      {currentDogs &&
-        currentDogs.map((el) => (
-          <Card
-            key={el.id}
-            id={el.id}
-            name={el.name}
-            height={el.height}
-            weight={el.weight}
-            life_span={el.life_span}
-            image={el.image}
-            temperaments={
-              el.temperaments && el.temperaments[0].hasOwnProperty("name")
-                ? el.temperaments
-                    .map((el) => Object.values(el))
-                    .flat()
-                    .map((el, indx) => <li key={indx}>{el}</li>)
-                : el.temperaments &&
-                  el.temperaments
-                    .split(", ")
-                    .map((el, indx) => <li key={indx}>{el}</li>)
-            }
-          />
-        ))}
+      <Cards currentDogs={currentDogs} />
     </div>
   );
 }
