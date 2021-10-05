@@ -11,6 +11,7 @@ import {
   breedByUser,
 } from "../actions";
 import { Card } from "./Card";
+import { FilterAscDesc } from "./FilterAscDesc";
 import { FilterByTemperaments } from "./FilterByTemperament";
 import { MasMenosPesado } from "./MasMenosPesado";
 import { Paginado } from "./Paginado";
@@ -48,13 +49,6 @@ export function Home() {
     dispatch(filterByBreed(e.target.value));
   }
 
-  function handleFilterAsc_Desc(e) {
-    e.preventDefault();
-    dispatch(filterAsc_Desc(e.target.value));
-    setCurrentPage(1);
-    setOrden(`Ordenado ${e.target.value}`);
-  }
-
   function handleBreed(e) {
     e.preventDefault();
     console.log(e.type);
@@ -86,12 +80,10 @@ export function Home() {
         </select>
       </div>
 
-      <div>
-        <select onChange={(e) => handleFilterAsc_Desc(e)}>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
-        </select>
-      </div>
+      <FilterAscDesc 
+      setCurrentPage={setCurrentPage}
+      setOrden = {setOrden}
+      />
 
       <MasMenosPesado 
       setCurrentPage={setCurrentPage}
