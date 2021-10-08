@@ -1,0 +1,26 @@
+/* .detail{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: #457B9D;
+} */
+
+.details{
+    display: grid;
+    padding-top: 100px;
+    grid-template-columns: 500px 500px;
+    /* grid-row: 1fr; */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    color:  #457B9D ;
+}
+
+.breed{
+    color:  #457B9D ;
+}
+
+.button{
+    padding-top: 15px;
+}

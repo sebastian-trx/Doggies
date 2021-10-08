@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0; 
+}
+.Navbar{
+    /* width: 80%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; */
+    /* list-style: none; */
+    padding: 20px;
+    background-color:#E63946;
+}
+
+.Navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    
+}

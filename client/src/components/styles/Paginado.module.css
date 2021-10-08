@@ -1,0 +1,14 @@
+.Paginado{
+    margin: 20px;
+}
+
+.Paginado ul li{
+    display: inline;
+    padding: 5px;
+}
+
+.Paginado_boton{
+    padding: 10px;
+    background-color: #1D3557;
+    color: #F1FAEE;
+}

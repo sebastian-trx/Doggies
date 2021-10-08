@@ -1,0 +1,15 @@
+.Grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 320px);
+  justify-content: center;
+  gap: 10px;
+  row-gap: 25px;
+}
+
+/* .container {
+    display: grid;
+    grid-template-columns: 335px 335px 335px 335px;
+    grid-template-rows: 735px 735px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px
+} */

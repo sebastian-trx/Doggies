@@ -8,14 +8,13 @@ import { FilterAscDesc } from "./FilterAscDesc";
 import { FilterByBreed } from "./FilterByBreed";
 import { FilterByTemperaments } from "./FilterByTemperament";
 import { MasMenosPesado } from "./MasMenosPesado";
+import { Navbar } from "./Navbar";
 import { Paginado } from "./Paginado";
 import { SearchBar } from "./SearchBar";
 
 export function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.dogs);
-  const allDogs1 = useSelector((state) => state.dogs1);
-  const temperaments = useSelector((state) => state.temperaments);
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [dogsPerPage, setDogsPerPage] = useState(8);
@@ -39,33 +38,45 @@ export function Home() {
 
   return (
     <div>
-      <h1>PERRITUS </h1>
+      <Navbar
+        BreedFromApiOrUser={<BreedFromApiOrUser />}
+        FilterAscDesc={
+          <FilterAscDesc setCurrentPage={setCurrentPage} setOrden={setOrden} />
+        }
+        MasMenosPesado={
+          <MasMenosPesado setCurrentPage={setCurrentPage} setOrden={setOrden} />
+        }
+        FilterByBreed={<FilterByBreed />}
+        FilterByTemperaments={<FilterByTemperaments />}
+        SearchBar={<SearchBar />}
+      />
+      {/* <h1>PERRITUS </h1> */}
 
-      <div>
+      {/* <div>
         <button
           onClick={(e) => {
             handleClick(e);
           }}
         >
-          Cargar los perros de nuevo
+          Todas las razas
         </button>
       </div>
 
       <Link to="/createbreed">
         <button>Crear Raza</button>
-      </Link>
+      </Link> */}
 
-      <BreedFromApiOrUser />
+      {/* <BreedFromApiOrUser /> */}
 
-      <FilterAscDesc setCurrentPage={setCurrentPage} setOrden={setOrden} />
+      {/* <FilterAscDesc setCurrentPage={setCurrentPage} setOrden={setOrden} /> */}
 
-      <MasMenosPesado setCurrentPage={setCurrentPage} setOrden={setOrden} />
+      {/* <MasMenosPesado setCurrentPage={setCurrentPage} setOrden={setOrden} /> */}
 
-      <FilterByBreed />
+      {/* <FilterByBreed /> */}
 
-      <FilterByTemperaments />
+      {/* <FilterByTemperaments /> */}
 
-      <SearchBar />
+      {/* <SearchBar /> */}
 
       <Paginado
         dogsPerPage={dogsPerPage}

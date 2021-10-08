@@ -110,7 +110,7 @@ export function BreedCreate() {
   return (
     <div>
       <Link to="/home">
-        <button>Ir a pagina principal</button>
+        <button>Ir a página principal</button>
       </Link>
       <h1>crea tu raza de perro</h1>
       <form onSubmit={handleSubmit}>

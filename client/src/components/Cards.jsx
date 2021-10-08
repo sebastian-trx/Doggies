@@ -1,8 +1,9 @@
 import { Card } from "./Card";
+import styles from  "./styles/Cards.module.css"
 
 export function Cards({ currentDogs }) {
   return (
-    <div>
+    <div className={styles.Grid} >
       {currentDogs &&
         currentDogs.map((el) => (
           <Card

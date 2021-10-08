@@ -1,3 +1,16 @@
+import axios from "axios";
+
+/*async function getApiAsync(params) {
+  try{
+    let algo = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+        console.log(algo.data)
+  }catch{
+    console.log('error')
+  }
+} 
+getApiAsync()*/
+
+
 let allDogs1 = [
   {
     id: 264,
@@ -35,6 +48,10 @@ let allDogs1 = [
     ],
   },
 ];
+
+
+
+
 
 let filterByTemperament, filter1, filter2;
 // si existe temperaments y si es de tipo string filter2
@@ -100,3 +117,8 @@ let temperaments1 = [...new Set(temperaments)];
 let filter = temperaments.filter((e) => e !== "Loyal");
 
 console.log(temperaments1);  
+
+let string = "hola@hot.com"
+
+console.log(!/\S+@\S+\.\S+/.test(string))
+console.log(string.match(!/\S+@\S+\.\S+/))
