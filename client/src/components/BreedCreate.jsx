@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperaments, createBreed } from "../actions";
+import styles from './styles/BreedCreate.module.css'
 
 export function BreedCreate() {
   const dispatch = useDispatch();
@@ -108,63 +109,68 @@ export function BreedCreate() {
   }, []);
 
   return (
-    <div>
+    <div className={styles.bc}>
       <Link to="/home">
         <button>Ir a página principal</button>
       </Link>
-      <h1>crea tu raza de perro</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className={styles.title}>Crear raza </h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div>
-          <label>Nombre:</label>
+          <strong><p><label>Nombre:</label></p></strong>
           <input
             type="text"
+            className={styles.input}
             value={input.name}
             name="name"
             onChange={handleInput}
           />
-        {errors.name && <p>{errors.name}</p>}
+        {errors.name && <p className={styles.errors}>{errors.name}</p>}
         </div>
         <br />
         <div>
-          <label>Altura:</label>
+          <strong><p><label>Altura:</label></p></strong>
           <input
             type="text"
+            className={styles.input}
             placeholder="min - max"
             value={input.height}
             name="height"
             onChange={handleInput}
           />
-          {errors.height && <p>{errors.height}</p>}
+          {errors.height && <p className={styles.errors}>{errors.height}</p>}
         </div>
         <br />
         <div>
-          <label>Peso:</label>
+          <strong><p><label>Peso:</label></p></strong>
           <input
             type="text"
+            className={styles.input}
             placeholder="min - max"
             value={input.weight}
             name="weight"
             onChange={handleInput}
           />
-          {errors.weight && <p>{errors.weight}</p>}
+          {errors.weight && <p className={styles.errors} >{errors.weight}</p>}
         </div>
         <br />
         <div>
-          <label>Años de vida:</label>
+          <strong><p><label>Años de vida:</label></p></strong>
           <input
             type="text"
+            className={styles.input}
             placeholder="min - max"
             value={input.life_span}
             name="life_span"
             onChange={handleInput}
           />
-          {errors.life_span && <p>{errors.life_span}</p>}
+          {errors.life_span && <p className={styles.errors}>{errors.life_span}</p>}
         </div>
         <br />
         <div>
-          <label>Imagen:</label>
+        <strong><p><label>Imagen:</label></p></strong>
           <input
             type="text"
+            className={styles.input}
             placeholder="url de la imagen "
             value={input.image}
             name="image"
@@ -173,18 +179,19 @@ export function BreedCreate() {
         </div>
         <br />
         <div>
-          <label>Temperamentos: </label>
-          <select onChange={handleSelect}>
+        <strong><p><label>Temperamentos: </label></p></strong>
+          <select className={styles.temperaments} onChange={handleSelect}>
             {temperaments.map((el) => (
               <option value={el.name}>{el.name}</option>
             ))}
           </select>
-          <ul>
+          <ul className={styles.temperaments}>
             {input.temperament &&
               [...new Set(input.temperament)].map((el) => (
-                <li>
+                <li className={styles.temperaments_li}>
                   {el}
                   <button
+                    className = {styles.errors_button}
                     type="button"
                     onClick={(e) => {
                       handleClick(e, el);
