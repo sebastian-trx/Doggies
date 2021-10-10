@@ -1,4 +1,4 @@
-import styles from './styles/Paginado.module.css'
+import styles from './styles/Home.module.css'
 
 export function Paginado({ dogsPerPage, allDogs, paginado }) {
   const pageNumber = [];

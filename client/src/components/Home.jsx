@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getDogs, getTemperaments } from "../actions";
 import { BreedFromApiOrUser } from "./BreedFromApiOrUser";
 import { Cards } from "./Cards";
@@ -11,6 +10,8 @@ import { MasMenosPesado } from "./MasMenosPesado";
 import { Navbar } from "./Navbar";
 import { Paginado } from "./Paginado";
 import { SearchBar } from "./SearchBar";
+import { Sidebar } from "./Sidebar";
+import styles from "./styles/Home.module.css";
 
 export function Home() {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ export function Home() {
   }
 
   return (
-    <div>
+    <div className={styles.gridContainer}>
       <Navbar
         BreedFromApiOrUser={<BreedFromApiOrUser />}
         FilterAscDesc={
@@ -50,38 +51,23 @@ export function Home() {
         FilterByTemperaments={<FilterByTemperaments />}
         SearchBar={<SearchBar />}
       />
-      {/* <h1>PERRITUS </h1> */}
-
-      {/* <div>
-        <button
-          onClick={(e) => {
-            handleClick(e);
-          }}
-        >
-          Todas las razas
-        </button>
-      </div>
-
-      <Link to="/createbreed">
-        <button>Crear Raza</button>
-      </Link> */}
-
-      {/* <BreedFromApiOrUser /> */}
-
-      {/* <FilterAscDesc setCurrentPage={setCurrentPage} setOrden={setOrden} /> */}
-
-      {/* <MasMenosPesado setCurrentPage={setCurrentPage} setOrden={setOrden} /> */}
-
-      {/* <FilterByBreed /> */}
-
-      {/* <FilterByTemperaments /> */}
-
-      {/* <SearchBar /> */}
 
       <Paginado
         dogsPerPage={dogsPerPage}
         allDogs={allDogs.length}
         paginado={paginado}
+      />
+
+      <Sidebar
+        BreedFromApiOrUser={<BreedFromApiOrUser />}
+        FilterAscDesc={
+          <FilterAscDesc setCurrentPage={setCurrentPage} setOrden={setOrden} />
+        }
+        MasMenosPesado={
+          <MasMenosPesado setCurrentPage={setCurrentPage} setOrden={setOrden} />
+        }
+        FilterByBreed={<FilterByBreed />}
+        FilterByTemperaments={<FilterByTemperaments />}
       />
 
       <Cards currentDogs={currentDogs} />
