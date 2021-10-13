@@ -69,7 +69,6 @@ export function Home() {
         FilterByBreed={<FilterByBreed />}
         FilterByTemperaments={<FilterByTemperaments />}
       />
-
       <Cards currentDogs={currentDogs} />
     </div>
   );
