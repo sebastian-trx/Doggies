@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { searchBar } from "../actions";
 
-export function SearchBar() {
+export function SearchBar({setCurrentPage, setOrden}) {
   const dispatch = useDispatch();
   const [raza, setRaza] = useState("");
 
@@ -14,6 +14,8 @@ export function SearchBar() {
   function handleSearch(e) {
     e.preventDefault();
     dispatch(searchBar(raza));
+    setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`);
   }
 
   return (

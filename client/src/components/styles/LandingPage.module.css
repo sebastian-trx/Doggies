@@ -7,6 +7,13 @@
     justify-items: center; */
 }
 
+.button{
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #1D3557;
+    color: #F1FAEE;
+}
+
 .landing{
     height: 100%;
     width: 100%;

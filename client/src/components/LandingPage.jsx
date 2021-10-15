@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./styles/LandingPage.module.css";
 
+
+
 export function LandingPage(params) {
-  // component module.css --> poner la imagen de fondo
   return (
     <div>
       <img
@@ -15,9 +16,9 @@ export function LandingPage(params) {
         alt="nf"
       />
       <div className={styles.text}>
-        <h1>DOGS</h1>
+        <h1>HENRY PI DOGS</h1>
         <Link to="/home">
-          <button>Entrar</button>
+          <button className = {styles.button}>Entrar</button>
         </Link>
       </div>
     </div>

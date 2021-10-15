@@ -49,7 +49,7 @@ export function Home() {
         }
         FilterByBreed={<FilterByBreed />}
         FilterByTemperaments={<FilterByTemperaments />}
-        SearchBar={<SearchBar />}
+        SearchBar={<SearchBar setCurrentPage={setCurrentPage} setOrden={setOrden}/>}
       />
 
       <Paginado
