@@ -50,3 +50,11 @@
     margin-left: 10px;
     padding: 0px 2px;
 }
+
+.button{
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #1D3557;
+    color: #F1FAEE;
+}

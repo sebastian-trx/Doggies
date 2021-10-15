@@ -77,7 +77,7 @@ export function BreedCreate() {
 
       
       else if (Object.entries(errors).length === 0){
-        errors.boton = <button type="submit">Crear raza de perro</button>
+        errors.boton = <button className={styles.button} type="submit">Crear raza</button>
       }
       return errors
   }
@@ -110,9 +110,7 @@ export function BreedCreate() {
 
   return (
     <div className={styles.bc}>
-      <Link to="/home">
-        <button>Ir a página principal</button>
-      </Link>
+     
       <h1 className={styles.title}>Crear raza </h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div>
@@ -206,6 +204,9 @@ export function BreedCreate() {
         {errors.boton}
         {/* <button type="submit">Crear raza de perro</button> */}
       </form>
+      <Link to="/home">
+        <button className={styles.button}>Ir a página principal</button>
+      </Link>
     </div>
   );
 }

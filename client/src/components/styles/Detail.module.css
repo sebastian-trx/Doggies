@@ -21,6 +21,13 @@
     color:  #457B9D ;
 }
 
-.button{
+.div{
     padding-top: 15px;
+}
+
+.button{
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #1D3557;
+    color: #F1FAEE;
 }

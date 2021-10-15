@@ -1,0 +1,20 @@
+.button{
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #457B9D;
+    color: #F1FAEE;
+}
+
+.input{
+    border-radius: 4px;
+    /* border-color: #1D3557; */
+    border:none;
+    outline: none;
+    border: solid 1px #F1FAEE;
+    padding: 5px;
+    width: 300px;
+    background-color: #1D3557;
+    color: #F1FAEE;   
+}
+
+.input::placeholder { color: #F1FAEE; }

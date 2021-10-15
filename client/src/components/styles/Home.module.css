@@ -15,6 +15,12 @@
     justify-content: space-between;
 }
 
+.Navbar_button{
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #457B9D;
+    color: #F1FAEE;
+}
 
 .Sidebar{
     grid-area: Sidebar;

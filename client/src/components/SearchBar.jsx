@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { searchBar } from "../actions";
+import styles from './styles/SearchBar.module.css'
 
 export function SearchBar({setCurrentPage, setOrden}) {
   const dispatch = useDispatch();
@@ -21,11 +22,12 @@ export function SearchBar({setCurrentPage, setOrden}) {
   return (
     <div>
       <input
+        className = {styles.input}
         type="text"
         placeholder="buscar raza"
         onChange={(e) => handleInput(e)}
       />
-      <button type="submit" onClick={(e) => handleSearch(e)}>
+      <button className={styles.button} type="submit" onClick={(e) => handleSearch(e)}>
         Buscar
       </button>
     </div>

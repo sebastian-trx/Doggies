@@ -44,9 +44,9 @@ export function Detail(props) {
           <p>cargando...</p>
         </div>
       )}
-      <div className={style.button}>
+      <div className={style.div}>
       <Link to="/home">
-        <button>Ir a página principal</button>
+        <button className={style.button}>Ir a página principal</button>
       </Link>
       </div>
     </div>

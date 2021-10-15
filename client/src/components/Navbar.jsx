@@ -20,7 +20,7 @@ export function Navbar({
   return (
     <div className={styles.Navbar}>
       <div className={styles.Navbar_1}>
-      <p> <button
+      <p> <button className={styles.Navbar_button}
             onClick={(e) => {
               handleClick(e);
             }}
@@ -30,7 +30,7 @@ export function Navbar({
       <p>{SearchBar}</p>
       <p>{
             <Link to="/createbreed">
-              <button>Crear Raza</button>
+              <button className={styles.Navbar_button}>Crear Raza</button>
             </Link>
           }</p>
       </div>
