@@ -55,3 +55,22 @@ Adicionalmente será necesario que creen desde psql una base de datos llamada `d
 - [ ] Sequelize - Postgres
 
 # Capturas del proyecto
+## - Landing page
+<p>
+  <img src="./landing.png" />
+</p>
+
+## - Página principal
+<p>
+  <img src="./pagina principal.png" />
+</p>
+
+## - Formulario controlado para crear nueva raza 
+<p>
+  <img src="./crear raza.png" />
+</p>
+
+## - Detalle
+<p>
+  <img src="./detalle.png" />
+</p>
