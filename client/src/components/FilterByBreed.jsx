@@ -2,13 +2,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { filterByBreed } from "../actions";
 
 
-export function FilterByBreed(params) {
+export function FilterByBreed({setCurrentPage, setOrden}) {
     const allDogs1 = useSelector((state) => state.dogs1);
     const dispatch = useDispatch()
     
     function handleFilterByBreed(e) {
         e.preventDefault();
         dispatch(filterByBreed(e.target.value));
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`);
       }
 
     return(

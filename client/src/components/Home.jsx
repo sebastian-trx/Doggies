@@ -32,12 +32,12 @@ export function Home() {
     dispatch(getTemperaments());
   }, []);
 
-
   return (
     <div className={styles.gridContainer}>
       <Navbar
-        
-        SearchBar={<SearchBar setCurrentPage={setCurrentPage} setOrden={setOrden}/>}
+        SearchBar={
+          <SearchBar setCurrentPage={setCurrentPage} setOrden={setOrden} />
+        }
       />
 
       <Paginado
@@ -47,15 +47,27 @@ export function Home() {
       />
 
       <Sidebar
-        BreedFromApiOrUser={<BreedFromApiOrUser />}
+        BreedFromApiOrUser={
+          <BreedFromApiOrUser
+            setCurrentPage={setCurrentPage}
+            setOrden={setOrden}
+          />
+        }
         FilterAscDesc={
           <FilterAscDesc setCurrentPage={setCurrentPage} setOrden={setOrden} />
         }
         MasMenosPesado={
           <MasMenosPesado setCurrentPage={setCurrentPage} setOrden={setOrden} />
         }
-        FilterByBreed={<FilterByBreed />}
-        FilterByTemperaments={<FilterByTemperaments />}
+        FilterByBreed={
+          <FilterByBreed setCurrentPage={setCurrentPage} setOrden={setOrden} />
+        }
+        FilterByTemperaments={
+          <FilterByTemperaments
+            setCurrentPage={setCurrentPage}
+            setOrden={setOrden}
+          />
+        }
       />
       <Cards currentDogs={currentDogs} />
     </div>

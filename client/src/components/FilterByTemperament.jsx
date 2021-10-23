@@ -4,7 +4,7 @@ import { filterByTemperament,getTemperaments } from "../actions";
 
 
 
-export function FilterByTemperaments() {
+export function FilterByTemperaments({setCurrentPage, setOrden}) {
     const dispatch = useDispatch()
     const temperaments = useSelector((state) => state.temperaments);
 
@@ -15,6 +15,8 @@ export function FilterByTemperaments() {
     function handleFilterByTemperament(e) {
         e.preventDefault();
         dispatch(filterByTemperament(e.target.value));
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`);
     }
 
     return(

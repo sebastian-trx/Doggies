@@ -1,12 +1,14 @@
 import { useDispatch } from "react-redux";
 import { breedByUser } from "../actions";
 
-export function BreedFromApiOrUser(params) {
+export function BreedFromApiOrUser({setCurrentPage, setOrden}) {
     const dispatch = useDispatch()
 
     function handleBreed(e) {
         e.preventDefault();
         dispatch(breedByUser(e.target.value));
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`);
       }
     return(
         <div>
