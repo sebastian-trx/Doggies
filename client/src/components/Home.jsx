@@ -32,23 +32,11 @@ export function Home() {
     dispatch(getTemperaments());
   }, []);
 
-  function handleClick(e) {
-    e.preventDefault();
-    dispatch(getDogs());
-  }
 
   return (
     <div className={styles.gridContainer}>
       <Navbar
-        BreedFromApiOrUser={<BreedFromApiOrUser />}
-        FilterAscDesc={
-          <FilterAscDesc setCurrentPage={setCurrentPage} setOrden={setOrden} />
-        }
-        MasMenosPesado={
-          <MasMenosPesado setCurrentPage={setCurrentPage} setOrden={setOrden} />
-        }
-        FilterByBreed={<FilterByBreed />}
-        FilterByTemperaments={<FilterByTemperaments />}
+        
         SearchBar={<SearchBar setCurrentPage={setCurrentPage} setOrden={setOrden}/>}
       />
 
