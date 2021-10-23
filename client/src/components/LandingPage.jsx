@@ -16,7 +16,7 @@ export function LandingPage(params) {
         alt="nf"
       />
       <div className={styles.text}>
-        <h1>HENRY PI DOGS</h1>
+        <h1>DOGGIES</h1>
         <Link to="/home">
           <button className = {styles.button}>Entrar</button>
         </Link>
