@@ -91,7 +91,6 @@ router.get('/dogs', async(req,res) =>{
         let dog = await all.filter(el => el.name.toLowerCase().includes(raza.toLowerCase()))
         dog.length ?
         res.status(200).send(dog):
-        //res.send('Ups no existe esa raza')
         res.json([{
             "id": 000000,
             "name": "notFound",
@@ -103,49 +102,8 @@ router.get('/dogs', async(req,res) =>{
           },])
     }
     res.status(200).send(all)
-    //console.log(all.map(e => e.id));
-  // console.log(players.map(p => p.toJSON()));
+  // console.log(all.map(p => p.toJSON()));
 })
-
-
-/*
-router.get('/dog', async(req,res) =>{
-    let {raza} = req.query
-    let all = await getAllDogs()
-    if(raza){
-        let dog = await all.filter(el => el.name.toLowerCase().includes(raza.toLowerCase()))
-        dog.length ?
-        res.status(200).send(dog):
-        //res.send('Ups no existe esa raza')
-        res.json([{
-            "id": 000000,
-            "name": "notFound",
-            "height": "notFound",
-            "weight": "notFound",
-            "life_span": "notFound",
-            "image": "https://ctuid.com/img/not-found.png",
-            "temperaments": "notFound"
-          },])
-    }
-    
-    res.status(200).send(all.map(el => {
-        return {id:el.id,
-        name:el.name,
-        height:el.height,
-        weight:el.weight,
-        life_span:el.life_span,
-        image:el.image,
-        temperaments: el.temperaments && el.temperaments[0].hasOwnProperty("name")
-        ? el.temperaments
-            .map((el) => Object.values(el))
-            .flat()
-        : el.temperaments &&
-        el.temperaments
-        }
-        }))
- 
-})
-*/
 
 
 router.get('/dogs/:idRaza', async (req,res) => {
@@ -203,6 +161,16 @@ router.post('/dogs', async (req,res) =>{
     })
     razaCreated.addTemperament(temperamentDb)
     res.send('nueva raza creada ')
+})
+
+router.delete('/dogs/delete', async (req, res)=> {
+    let {name} = req.body
+    await Dog.destroy(
+        {
+            where : {name: name}
+        }
+    ) 
+    res.send('raza eliminada')
 })
 
 module.exports = router;
