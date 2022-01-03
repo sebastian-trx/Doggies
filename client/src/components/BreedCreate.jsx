@@ -106,7 +106,7 @@ export function BreedCreate() {
 
   useEffect(() => {
     dispatch(getTemperaments());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.bc}>

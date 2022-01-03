@@ -9,7 +9,7 @@ export function Detail(props) {
   const id = props.match.params.id;
   useEffect(() => {
     dispatch(detail(id));
-  }, []);
+  }, [dispatch, id]);
 
   const dog = useSelector((state) => state.detail);
   //console.log(dog[0].name, id)

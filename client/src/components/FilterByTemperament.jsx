@@ -10,7 +10,7 @@ export function FilterByTemperaments({setCurrentPage, setOrden}) {
 
     useEffect(() => {
         dispatch(getTemperaments());
-      }, []);
+      }, [dispatch]);
 
     function handleFilterByTemperament(e) {
         e.preventDefault();
