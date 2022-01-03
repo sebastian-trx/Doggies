@@ -46,11 +46,13 @@ function rootReducer(state = initialState, action) {
         if (el.temperaments && typeof el.temperaments === "string") {
           return el.temperaments.split(", ").includes(action.payload);
         }
+        return false
       });
       filter2 = allDogs1.filter((el) => {
         if (el.temperaments && Array.isArray(el.temperaments)) {
           return el.temperaments.map((el) => el.name).includes(action.payload);
         }
+        return false
       });
       filterByTemperament = filter1.concat(filter2);
       return {
@@ -119,11 +121,13 @@ function rootReducer(state = initialState, action) {
               if (el.temperaments && typeof el.temperaments !== "string") {
                 return true;
               }
+              return false
             })
           : allDogs4.filter((el) => {
               if (el.temperaments && typeof el.temperaments === "string") {
                 return true;
               }
+              return false
             });
       return {
         ...state,

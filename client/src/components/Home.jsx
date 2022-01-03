@@ -16,7 +16,8 @@ import styles from "./styles/Home.module.css";
 export function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.dogs);
-  const [/*orden,*/ setOrden] = useState("");
+  // eslint-disable-next-line
+  const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [dogsPerPage, /*setDogsPerPage*/] = useState(8);
   const indexofLastDog = currentPage * dogsPerPage;
