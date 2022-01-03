@@ -22,6 +22,7 @@ export function FilterByTemperaments({setCurrentPage, setOrden}) {
     return(
         <div>
         <select onChange={(e) => handleFilterByTemperament(e)}>
+        <option value = "Temperamento" > Temperamento </option>
           {temperaments.map((el, indx) => (
             <option key={indx} value={el.name}>
               {el.name}

@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import { getDogs } from "../actions";
 
 export function Navbar({
-  BreedFromApiOrUser,
-  FilterAscDesc,
-  MasMenosPesado,
-  FilterByBreed,
-  FilterByTemperaments,
+  // BreedFromApiOrUser,
+  // FilterAscDesc,
+  // MasMenosPesado,
+  // FilterByBreed,
+  // FilterByTemperaments,
   SearchBar,
 }) {
   const dispatch = useDispatch();

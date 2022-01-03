@@ -13,6 +13,7 @@ export function BreedFromApiOrUser({setCurrentPage, setOrden}) {
     return(
         <div>
         <select onChange={(e) => handleBreed(e)}>
+          <option> API / usuario </option>
           <option value="api">Razas desde la API</option>
           <option value="user">Razas creadas por el usuario</option>
         </select>

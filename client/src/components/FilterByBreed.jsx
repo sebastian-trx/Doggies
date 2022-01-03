@@ -16,6 +16,7 @@ export function FilterByBreed({setCurrentPage, setOrden}) {
     return(
         <div>
         <select onChange={(e) => handleFilterByBreed(e)}>
+        <option value = "Raza" > Raza </option>
           {allDogs1.map((el, indx) => (
             <option key={indx} value={el.name}>
               {el.name}

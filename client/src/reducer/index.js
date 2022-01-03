@@ -14,6 +14,13 @@ function rootReducer(state = initialState, action) {
         dogs1: action.payload,
       };
     case "FILTER_BY_BREED":
+      //
+      if(action.payload === "Raza") {
+        return { 
+          ...state, 
+          dogs: state.dogs1}
+      }
+      //
       let allDogs = state.dogs1;
       let filteredByBreed = allDogs.filter((el) => el.name === action.payload);
       return {
@@ -26,6 +33,13 @@ function rootReducer(state = initialState, action) {
         temperaments: action.payload,
       };
     case "FILTER_BY_TEMPERAMENT":
+       //
+       if(action.payload === "Temperamento") {
+        return { 
+          ...state, 
+          dogs: state.dogs1}
+      }
+      //
       let allDogs1 = state.dogs1;
       let filterByTemperament, filter1, filter2;
       filter1 = allDogs1.filter((el) => {

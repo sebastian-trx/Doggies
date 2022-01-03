@@ -13,6 +13,7 @@ export function MasMenosPesado({setCurrentPage, setOrden}) {
   return (
     <div>
       <select onChange={(e) => handleFilterMax_Min(e)}>
+        <option > Peso </option>
         <option value="mas">Mas pesado</option>
         <option value="menos">Menos pesado</option>
       </select>

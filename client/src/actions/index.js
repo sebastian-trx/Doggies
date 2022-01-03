@@ -2,7 +2,8 @@ import axios from "axios";
 
 export function getDogs() {
   return async function (dispatch) {
-    let dogs = await axios.get("http://localhost:3001/dogs/");
+    // let dogs = await axios.get("http://localhost:3001/dogs/");
+    let dogs = await axios.get("/dogs/");
 
     return dispatch({
       type: "GET_DOGS",
@@ -20,7 +21,7 @@ export function filterByBreed(payload) {
 
 export function getTemperaments() {
   return async function (dispatch) {
-    let temperaments = await axios.get("http://localhost:3001/temperament/");
+    let temperaments = await axios.get("/temperament/");
 
     return dispatch({
       type: "GET_TEMPERAMENTS",
@@ -60,7 +61,7 @@ export function breedByUser(payload) {
 export function searchBar(payload) {
   return async function (dispatch) {
     let razaDogs = await axios.get(
-      `http://localhost:3001/dogs?raza=${payload}`
+      `/dogs?raza=${payload}`
     );
     return dispatch({
       type: "SEARCH_BAR",
@@ -71,7 +72,7 @@ export function searchBar(payload) {
 
 export function createBreed(payload) {
   return async function (dispatch) {
-    let createBreed = await axios.post("http://localhost:3001/dogs/", payload);
+    let createBreed = await axios.post("/dogs/", payload);
 
     return createBreed;
   };
@@ -79,7 +80,7 @@ export function createBreed(payload) {
 
 export function detail(payload){
     return async function (dispatch){
-        let detail = await axios.get(`http://localhost:3001/dogs/${payload}`)
+        let detail = await axios.get(`/dogs/${payload}`)
         return dispatch({
             type: 'GET_DETAIL',
             payload: detail.data

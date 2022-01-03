@@ -13,8 +13,9 @@ export function FilterAscDesc({setCurrentPage, setOrden}) {
   return (
     <div>
         <select onChange={(e) => handleFilterAsc_Desc(e)}>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
+          <option> ASC / DESC </option>
+          <option value="asc">Ascendente A - Z</option>
+          <option value="desc">Descendente Z - A</option>
         </select>
       </div>
   );
