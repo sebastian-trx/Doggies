@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300&display=swap");
+
+.landingContainer {
+  background-image: linear-gradient(#37aaff, #3c37ff);
+  height: 100vh;
+  display: flex;
+}
+
+/* tener en cuenta en movil */
+.landingImg {
+  background-image: url(../../img/dog.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  height: 100vh;
+  width: 50vw;
+}
+
+.landingTitle {
+  margin-top: 60vh;
+  font-family: "Roboto Mono", "monospace", sans-serif;
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.landingText {
+  margin-top: 15px;
+  font-family: "Roboto Mono", "monospace", sans-serif;
+  font-weight: normal;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.a{
+    margin-top: 90vh;
+}
+
+/* From cssbuttons.io by @meermubashar */
+.button {
+  width: 140px;
+  height: 45px;
+  font-size: 23px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-family: "monospace", sans-serif;
+  font-weight: 700;
+  position: relative;
+  transition: all 0.5s;
+  z-index: 1;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: white;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.button:hover::before {
+  width: 100%;
+}
+
+.button:hover {
+  color: black;
+}
+
+.button:active:before {
+  background: #b9b9b9;
+}
+
+/* tablet < 769px */
+@media (max-width: 817px) {
+  .landingContainer {
+    background-image: linear-gradient(#3c37ff, #37aaff);
+    display: grid;
+    height: 100vh;
+    position: relative;
+  }
+
+  .landingImg {
+    /* background-image: url(../../img/dog.png); */
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+    /* height: 300px; */
+    width: 40vh;
+    grid-row: 3/4;
+    position: absolute;
+    bottom: 0px;
+    /* left: 10vw; */
+    margin: 0 auto;
+  }
+
+  .landingTitle {
+    margin-top: 25px;
+    font-family: "Roboto Mono", "monospace", sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+  }
+
+  .landingText {
+    margin-top: 15px;
+    font-family: "Roboto Mono", "monospace", sans-serif;
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .button {
+    margin-top: 10px;
+    width: 140px;
+    height: 45px;
+    font-size: 23px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-family: "monospace", sans-serif;
+    font-weight: 700;
+    position: relative;
+    transition: all 0.5s;
+    z-index: 1;
+  }
+
+  .a{
+      position: absolute;
+      margin: 30vh 35vw;
+
+      /* margin-bottom: 1px; */
+  }
+}
+
+/* grid template areas */
+@media (max-width: 817px) and (orientation: landscape){
+    .landingText {
+     color: black;
+      }
+}

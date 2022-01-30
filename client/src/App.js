@@ -8,14 +8,14 @@ import { Detail } from './components/Detail';
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      {/* <div className="App"> */}
         <Switch>
           <Route exact path= '/' component= {LandingPage}/>
           <Route path = '/home' component = {Home}/>
           <Route path = '/createbreed' component = {BreedCreate}/>
           <Route path = '/detail/:id' component = {Detail}/>
         </Switch>
-      </div>
+      {/* </div> */}
     </BrowserRouter>
   );
 }
